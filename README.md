@@ -2,7 +2,7 @@
 Task Objective: Setting up of mongo DB connection in a Node.Js server as well as performance of CRUD operations
 
 ## Brief description
-Create a Node.js server using any framework of choice (optional) and appropriate folder structure (routes, controllers, models, etc.)
+A Node.js server using express framework and appropriate folder structure (routes, controllers, models, etc.)
 which will perform the following functions:
 
 1. Add a Todo task to a Todo collection
