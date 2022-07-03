@@ -1,8 +1,8 @@
 const http = require('http');
 
-const app = require('./app.js');
+const app = require('./app');
 
-const { mongoConnect } = require('../src/services/mongo')
+const { mongoConnect } = require('./services/mongo')
 
 const PORT = process.env.PORT || 5000;
 

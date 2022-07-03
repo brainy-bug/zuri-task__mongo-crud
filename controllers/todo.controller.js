@@ -1,6 +1,6 @@
 const {
     existsTaskWithId,
-    abortTaskById,
+    deleteTaskById,
     updateExistingTask,
     getAlltasks,
     scheduleNewtask
@@ -44,7 +44,7 @@ async function httpEditTask(req, res) {
     });
 }
 
-async function httpAbortTask(req, res) {
+async function httpDeleteTask(req, res) {
     const taskId = Number(req.params.id)
 
     const existstask = await existsTaskWithId(taskId);
@@ -55,11 +55,11 @@ async function httpAbortTask(req, res) {
         })
     }
 
-    const aborted = await abortTaskById(taskId)
+    const deleted = await deleteTaskById(taskId)
 
-    if (!aborted) {
+    if (!deleted) {
         return res.status(404).json({
-            error: "task not aborted."
+            error: "task not deleted."
         })
     }
     return res.status(200).json({
@@ -72,5 +72,5 @@ module.exports = {
     httpGetAllTasks,
     httpAddNewTask,
     httpEditTask,
-    httpAbortTask,
+    httpDeleteTask,
 };

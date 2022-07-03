@@ -11,7 +11,7 @@ mongoose.connection.on('error', (err) => {
 })
 
 async function mongoConnect() {
-    // Connect MongoDB at default port 27017.
+    // Connect MongoDB at default port.
     await mongoose.connect(MONGO_URL);
 
 }

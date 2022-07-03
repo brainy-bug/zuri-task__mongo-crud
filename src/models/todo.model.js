@@ -16,15 +16,15 @@ async function existsTaskWithId(taskId) {
     }, { '_id': 0, '__v': 0, 'createdAt': 0 })
 }
 
-async function abortTaskById(taskId) {
-    const aborted = await tasks.deleteOne({
+async function deleteTaskById(taskId) {
+    const deleted = await tasks.deleteOne({
         taskNumber: taskId
     })
-    return aborted.acknowledged === true
+    return deleted.acknowledged === true
 }
 
 async function getLatesttaskNumber() {
-    //find task with the highes flight number
+    //find task with the highest task number
     const latestTask = await tasks
         .findOne()
         .sort('-taskNumber');
@@ -69,7 +69,7 @@ async function scheduleNewtask(task) {
 
 module.exports = {
     existsTaskWithId,
-    abortTaskById,
+    deleteTaskById,
     updateExistingTask,
     getAlltasks,
     scheduleNewtask,
