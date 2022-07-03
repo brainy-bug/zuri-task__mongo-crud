@@ -1,8 +1,8 @@
 const {
-    getAlltasks,
     existsTaskWithId,
     abortTaskById,
     updateExistingTask,
+    getAlltasks,
     scheduleNewtask
 } = require('../src/models/todo.model');
 
@@ -69,8 +69,8 @@ async function httpAbortTask(req, res) {
 
 
 module.exports = {
-    httpEditTask,
     httpGetAllTasks,
     httpAddNewTask,
+    httpEditTask,
     httpAbortTask,
 };
