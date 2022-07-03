@@ -5,7 +5,7 @@ const {
     httpAddNewTask,
     httpAbortTask,
     httpEditTask
-} = require('../todo/todo.controller')
+} = require('../controllers/todo.controller')
 
 const tasksRouter = express.Router();
 

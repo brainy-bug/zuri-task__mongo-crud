@@ -2,8 +2,9 @@ const {
     getAlltasks,
     existsTaskWithId,
     abortTaskById,
+    updateExistingTask,
     scheduleNewtask
-} = require('../../src/models/todo.model');
+} = require('../src/models/todo.model');
 
 async function httpGetAllTasks(req, res) {
     return res.status(200).json(await getAlltasks())
@@ -17,6 +18,7 @@ async function httpAddNewTask(req, res) {
         })
     }
     await scheduleNewtask(task)
+    
     return res.status(201).json(task)
 }
 
@@ -25,19 +27,21 @@ async function httpEditTask(req, res) {
     const updatedTask = req.body;
 
     //get existing task
-    const task = await getExistingTask(taskId);
+    const task = await existsTaskWithId(taskId);
 
     //check for invalid task
-    if (!existsTaskWithId(taskId)) {
+    if (!task) {
         return res.status(404).json({
             error: "task not found"
         })
     }
 
     //update task by id
-    updateExistingtask(taskId, updatedTask)
+    updateExistingTask(updatedTask, taskId)
 
-    return res.status(201).json(task);
+    return res.status(201).json({
+        acknowledged: true
+    });
 }
 
 async function httpAbortTask(req, res) {

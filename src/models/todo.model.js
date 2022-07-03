@@ -13,7 +13,7 @@ saveTask(task)
 async function existsTaskWithId(taskId) {
     return tasks.findOne({
         taskNumber: taskId
-    })
+    }, { '_id': 0, '__v': 0, 'createdAt': 0 })
 }
 
 async function abortTaskById(taskId) {
@@ -30,15 +30,23 @@ async function getLatesttaskNumber() {
         .sort('-taskNumber');
 
     if (!latestTask) {
-    return DEFAULT_TASK_NUMBER
+        return DEFAULT_TASK_NUMBER
     }
 
     return latestTask.taskNumber
 }
 
+async function updateExistingTask(currentTask, taskId) {
+
+    const updatedTask = Object.assign(currentTask, {
+        taskNumber: taskId,
+    })
+
+    saveTask(updatedTask);
+}
 
 async function getAlltasks() {
-    return await tasks.find({}, { '_id': 0, '__v': 0 })
+    return await tasks.find({}, { '_id': 0, '__v': 0, 'updatedAt': 0 })
 }
 
 async function saveTask(task) {
@@ -62,6 +70,7 @@ async function scheduleNewtask(task) {
 module.exports = {
     existsTaskWithId,
     abortTaskById,
+    updateExistingTask,
     getAlltasks,
     scheduleNewtask,
 }
