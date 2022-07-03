@@ -51,7 +51,7 @@ async function httpAbortTask(req, res) {
 
     if (!existstask) {
         return res.status(404).json({
-            error: "task not found"
+            error: "task not found."
         })
     }
 
@@ -59,7 +59,7 @@ async function httpAbortTask(req, res) {
 
     if (!aborted) {
         return res.status(404).json({
-            error: "task not aborted"
+            error: "task not aborted."
         })
     }
     return res.status(200).json({
