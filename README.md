@@ -19,7 +19,7 @@ which will perform the following functions:
 - Run "npm install" command in the project folder
 - Run "npm start" command in the project folder and go to localhost:5000/tasks address
 
-------------
+-------------
 
 ## Details
 
